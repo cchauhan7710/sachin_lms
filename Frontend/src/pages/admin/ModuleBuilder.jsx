@@ -14,7 +14,7 @@ export default function ModuleBuilder({ courseId }) {
   // Load Course
   const loadCourse = () => {
     axios
-      .get(`https://lms-backend-qdid.onrender.com/courses/${courseId}`)
+      .get(`https://sachin-lms.onrender.com/courses/${courseId}`)
       .then((res) => setCourse(res.data));
   };
 
@@ -30,7 +30,7 @@ export default function ModuleBuilder({ courseId }) {
     if (!moduleName.trim()) return alert("Module name required!");
 
     await axios.post(
-      `https://lms-backend-qdid.onrender.com/courses/${courseId}/module`,
+      `https://sachin-lms.onrender.com/courses/${courseId}/module`,
       { title: moduleName, lessons: [] }
     );
 
@@ -43,7 +43,7 @@ export default function ModuleBuilder({ courseId }) {
     if (!window.confirm("Delete this entire module?")) return;
 
     await axios.delete(
-      `https://lms-backend-qdid.onrender.com/courses/${courseId}/module/${mIndex}`
+      `https://sachin-lms.onrender.com/courses/${courseId}/module/${mIndex}`
     );
 
     setSelectedModule(null);
@@ -60,7 +60,7 @@ export default function ModuleBuilder({ courseId }) {
 
     try {
       const res = await axios.post(
-        "https://lms-backend-qdid.onrender.com/upload/video",
+        "https://sachin-lms.onrender.com/upload/video",
         form,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -79,7 +79,7 @@ export default function ModuleBuilder({ courseId }) {
     if (!videoUrl.trim()) return alert("Upload video first!");
 
     await axios.post(
-      `https://lms-backend-qdid.onrender.com/courses/${courseId}/module/${selectedModule}/lesson`,
+      `https://sachin-lms.onrender.com/courses/${courseId}/module/${selectedModule}/lesson`,
       { title, videoUrl, description }
     );
 
@@ -94,7 +94,7 @@ export default function ModuleBuilder({ courseId }) {
     if (!window.confirm("Delete this lesson?")) return;
 
     await axios.delete(
-      `https://lms-backend-qdid.onrender.com/courses/${courseId}/module/${selectedModule}/lesson/${lIndex}`
+      `https://sachin-lms.onrender.com/courses/${courseId}/module/${selectedModule}/lesson/${lIndex}`
     );
 
     loadCourse();

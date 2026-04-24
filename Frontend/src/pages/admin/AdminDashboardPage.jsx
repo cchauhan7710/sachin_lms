@@ -10,7 +10,7 @@ export default function DashboardPage() {
     const fetchCourses = async () => {
       try {
         const res = await axios.get(
-          "https://lms-backend-qdid.onrender.com/courses/all"
+          "https://sachin-lms.onrender.com/courses/all"
         );
 
         if (Array.isArray(res.data)) {

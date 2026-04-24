@@ -16,7 +16,7 @@ const ProfilePage = () => {
     }
 
     axios
-      .get("https://lms-backend-qdid.onrender.com/auth/me", {
+      .get("https://sachin-lms.onrender.com/auth/me", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

@@ -11,7 +11,7 @@ const SupportPage = ({ navigate }) => {
     const message = e.target.message.value;
 
     try {
-      const res = await axios.post("https://lms-backend-qdid.onrender.com/support/contact", {
+      const res = await axios.post("https://sachin-lms.onrender.com/support/contact", {
         name,
         email,
         message,

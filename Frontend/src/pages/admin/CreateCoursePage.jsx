@@ -68,7 +68,7 @@ const compressImage = (file) => {
 
     try {
       const res = await axios.post(
-        "https://lms-backend-qdid.onrender.com/upload/video",
+        "https://sachin-lms.onrender.com/upload/video",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -104,7 +104,7 @@ const uploadThumbnail = async () => {
   formData.append("thumbnail", compressed, thumbnail.name);
 
   const res = await axios.post(
-    "https://lms-backend-qdid.onrender.com/upload/image",
+    "https://sachin-lms.onrender.com/upload/image",
     formData,
     {
       headers: { "Content-Type": "multipart/form-data" },
@@ -128,7 +128,7 @@ const uploadThumbnail = async () => {
       const thumbnailUrl = await uploadThumbnail();
 
       await axios.post(
-        "https://lms-backend-qdid.onrender.com/courses/create",
+        "https://sachin-lms.onrender.com/courses/create",
         {
           title,
           price: Number(price),

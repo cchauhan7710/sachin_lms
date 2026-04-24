@@ -18,7 +18,7 @@ export default function MyLearningPage() {
       }
 
       try {
-        const res = await axios.get("https://lms-backend-qdid.onrender.com/auth/me", {
+        const res = await axios.get("https://sachin-lms.onrender.com/auth/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
 

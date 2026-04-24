@@ -22,7 +22,7 @@ const CoursesPage = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    axios.get("https://lms-backend-qdid.onrender.com/courses/all").then(res => {
+    axios.get("https://sachin-lms.onrender.com/courses/all").then(res => {
       setCourses(res.data);
     });
   }, []);

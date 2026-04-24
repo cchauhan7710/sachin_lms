@@ -7,7 +7,7 @@ export function useAuthUser() {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    fetch("https://lms-backend-qdid.onrender.com/auth/me", {
+    fetch("https://sachin-lms.onrender.com/auth/me", {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
