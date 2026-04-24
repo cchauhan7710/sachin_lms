@@ -8,7 +8,7 @@ export default function ManageCoursesPage() {
 
   const loadCourses = async () => {
     try {
-      const res = await axios.get("${import.meta.env.VITE_API_URL}/courses/all");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/courses/all");
       setCourses(res.data);
     } catch (err) {
       console.error("Error loading courses:", err);

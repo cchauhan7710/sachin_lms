@@ -36,8 +36,16 @@ router.post("/send-otp", async (req, res) => {
 
     res.json({ success: true, message: "OTP sent to email" });
   } catch (error) {
-    console.error("OTP ERROR:", error);
-    res.status(500).json({ success: false, message: "Failed to send OTP" });
+    console.error("CRITICAL OTP ERROR:", {
+      message: error.message,
+      stack: error.stack,
+      user: process.env.MAIL_USER ? "Present" : "MISSING",
+      pass: process.env.MAIL_PASS ? "Present" : "MISSING"
+    });
+    res.status(500).json({ 
+      success: false, 
+      message: "Failed to send OTP. This is usually due to missing email configuration on the server." 
+    });
   }
 });
 

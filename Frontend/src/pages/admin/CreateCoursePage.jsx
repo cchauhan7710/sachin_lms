@@ -68,7 +68,7 @@ const compressImage = (file) => {
 
     try {
       const res = await axios.post(
-        "${import.meta.env.VITE_API_URL}/upload/video",
+        `${import.meta.env.VITE_API_URL}/upload/video",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -104,7 +104,7 @@ const uploadThumbnail = async () => {
   formData.append("thumbnail", compressed, thumbnail.name);
 
   const res = await axios.post(
-    "${import.meta.env.VITE_API_URL}/upload/image",
+    `${import.meta.env.VITE_API_URL}/upload/image",
     formData,
     {
       headers: { "Content-Type": "multipart/form-data" },
@@ -128,7 +128,7 @@ const uploadThumbnail = async () => {
       const thumbnailUrl = await uploadThumbnail();
 
       await axios.post(
-        "${import.meta.env.VITE_API_URL}/courses/create",
+        `${import.meta.env.VITE_API_URL}/courses/create",
         {
           title,
           price: Number(price),
