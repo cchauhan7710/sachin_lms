@@ -119,7 +119,7 @@ function AddLessonToExistingModule({ courseId }) {
 
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/upload/video",
+        `${import.meta.env.VITE_API_URL}/upload/video`,
         fd,
         {
           headers: { "Content-Type": "multipart/form-data" },

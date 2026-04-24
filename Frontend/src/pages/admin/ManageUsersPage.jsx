@@ -6,7 +6,7 @@ export default function ManageUsersPage() {
   const [editUser, setEditUser] = useState(null);
 
   const loadUsers = () => {
-    axios.get(`${import.meta.env.VITE_API_URL}/auth/all").then((res) => setUsers(res.data.users));
+    axios.get(`${import.meta.env.VITE_API_URL}/auth/all`).then((res) => setUsers(res.data.users));
   };
 
   const deleteUser = async (id) => {
