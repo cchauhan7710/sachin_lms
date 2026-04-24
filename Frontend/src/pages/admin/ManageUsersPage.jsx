@@ -6,19 +6,19 @@ export default function ManageUsersPage() {
   const [editUser, setEditUser] = useState(null);
 
   const loadUsers = () => {
-    axios.get("https://sachin-lms.onrender.com/auth/all").then((res) => setUsers(res.data.users));
+    axios.get("${import.meta.env.VITE_API_URL}/auth/all").then((res) => setUsers(res.data.users));
   };
 
   const deleteUser = async (id) => {
     if (!window.confirm("Delete this user?")) return;
-    await axios.delete(`https://sachin-lms.onrender.com/auth/${id}`);
+    await axios.delete(`${import.meta.env.VITE_API_URL}/auth/${id}`);
     loadUsers();
   };
 
   const updateUser = async (e) => {
     e.preventDefault();
 
-    await axios.put(`https://sachin-lms.onrender.com/auth/update/${editUser._id}`, {
+    await axios.put(`${import.meta.env.VITE_API_URL}/auth/update/${editUser._id}`, {
       name: editUser.name,
       email: editUser.email,
       password: editUser.password, // new password (optional)

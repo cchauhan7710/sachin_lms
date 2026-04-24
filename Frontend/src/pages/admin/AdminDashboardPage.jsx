@@ -10,7 +10,7 @@ export default function DashboardPage() {
     const fetchCourses = async () => {
       try {
         const res = await axios.get(
-          "https://sachin-lms.onrender.com/courses/all"
+          "${import.meta.env.VITE_API_URL}/courses/all"
         );
 
         if (Array.isArray(res.data)) {

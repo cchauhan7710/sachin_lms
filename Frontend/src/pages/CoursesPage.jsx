@@ -22,7 +22,7 @@ const CoursesPage = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    axios.get("https://sachin-lms.onrender.com/courses/all").then(res => {
+    axios.get("${import.meta.env.VITE_API_URL}/courses/all").then(res => {
       setCourses(res.data);
     });
   }, []);

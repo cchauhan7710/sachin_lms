@@ -8,7 +8,7 @@ export default function ManageCoursesPage() {
 
   const loadCourses = async () => {
     try {
-      const res = await axios.get("https://sachin-lms.onrender.com/courses/all");
+      const res = await axios.get("${import.meta.env.VITE_API_URL}/courses/all");
       setCourses(res.data);
     } catch (err) {
       console.error("Error loading courses:", err);
@@ -21,13 +21,13 @@ export default function ManageCoursesPage() {
 
   const deleteCourse = async (id) => {
     if (!window.confirm("Delete this course?")) return;
-    await axios.delete(`https://sachin-lms.onrender.com/courses/${id}`);
+    await axios.delete(`${import.meta.env.VITE_API_URL}/courses/${id}`);
     loadCourses();
   };
 
   const togglePublish = async (id) => {
     try {
-      await axios.patch(`https://sachin-lms.onrender.com/courses/${id}/publish`);
+      await axios.patch(`${import.meta.env.VITE_API_URL}/courses/${id}/publish`);
       loadCourses();
     } catch (err) {
       console.error("Error toggling publish:", err);

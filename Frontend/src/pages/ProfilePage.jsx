@@ -16,7 +16,7 @@ const ProfilePage = () => {
     }
 
     axios
-      .get("https://sachin-lms.onrender.com/auth/me", {
+      .get("${import.meta.env.VITE_API_URL}/auth/me", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

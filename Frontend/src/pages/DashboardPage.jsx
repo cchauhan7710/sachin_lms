@@ -23,14 +23,14 @@ export default function DashboardPage() {
         const token = localStorage.getItem("token");
         if (!token) return navigate("/auth?mode=login");
 
-        const userRes = await axios.get("https://sachin-lms.onrender.com/auth/me", {
+        const userRes = await axios.get("${import.meta.env.VITE_API_URL}/auth/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
         if (userRes.data.success) setUser(userRes.data.user);
 
         const courseRes = await axios.get(
-          "https://sachin-lms.onrender.com/courses/my-learning",
+          "${import.meta.env.VITE_API_URL}/courses/my-learning",
           { headers: { Authorization: `Bearer ${token}` } }
         );
 

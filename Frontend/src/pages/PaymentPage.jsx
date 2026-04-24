@@ -29,7 +29,7 @@ export default function PaymentPage() {
       // Loop through each course and mark it purchased
       for (const course of cart) {
         await axios.post(
-          `https://sachin-lms.onrender.com/courses/purchase/${course._id}`,
+          `${import.meta.env.VITE_API_URL}/courses/purchase/${course._id}`,
           {},
           {
             headers: { Authorization: `Bearer ${token}` },

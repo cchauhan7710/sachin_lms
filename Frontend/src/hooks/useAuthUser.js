@@ -7,7 +7,7 @@ export function useAuthUser() {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    fetch("https://sachin-lms.onrender.com/auth/me", {
+    fetch("${import.meta.env.VITE_API_URL}/auth/me", {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())

@@ -17,7 +17,7 @@ export default function CoursePlayerPage() {
 
   /* ========= FETCH COURSE ========= */
   useEffect(() => {
-    axios.get(`https://sachin-lms.onrender.com/courses/${id}`).then((res) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/courses/${id}`).then((res) => {
       setCourse(res.data);
 
       // restore saved progress

@@ -20,7 +20,7 @@ export default function EditCoursePage() {
 
     try {
       await axios.put(
-        `https://sachin-lms.onrender.com/courses/${id}`,
+        `${import.meta.env.VITE_API_URL}/courses/${id}`,
         { modules }
       );
 
@@ -104,7 +104,7 @@ function AddLessonToExistingModule({ courseId }) {
   // Load modules for dropdown
   useEffect(() => {
     axios
-      .get(`https://sachin-lms.onrender.com/courses/${courseId}`)
+      .get(`${import.meta.env.VITE_API_URL}/courses/${courseId}`)
       .then((res) => setModules(res.data.modules))
       .catch((err) => console.error(err));
   }, [courseId]);
@@ -119,7 +119,7 @@ function AddLessonToExistingModule({ courseId }) {
 
     try {
       const res = await axios.post(
-        "https://sachin-lms.onrender.com/upload/video",
+        "${import.meta.env.VITE_API_URL}/upload/video",
         fd,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -147,7 +147,7 @@ function AddLessonToExistingModule({ courseId }) {
 
     try {
       await axios.post(
-        `https://sachin-lms.onrender.com/courses/${courseId}/module/${selectedModule}/lesson`,
+        `${import.meta.env.VITE_API_URL}/courses/${courseId}/module/${selectedModule}/lesson`,
         {
           title,
           description,

@@ -14,7 +14,7 @@ export default function ModuleBuilder({ courseId }) {
   // Load Course
   const loadCourse = () => {
     axios
-      .get(`https://sachin-lms.onrender.com/courses/${courseId}`)
+      .get(`${import.meta.env.VITE_API_URL}/courses/${courseId}`)
       .then((res) => setCourse(res.data));
   };
 
@@ -30,7 +30,7 @@ export default function ModuleBuilder({ courseId }) {
     if (!moduleName.trim()) return alert("Module name required!");
 
     await axios.post(
-      `https://sachin-lms.onrender.com/courses/${courseId}/module`,
+      `${import.meta.env.VITE_API_URL}/courses/${courseId}/module`,
       { title: moduleName, lessons: [] }
     );
 
@@ -43,7 +43,7 @@ export default function ModuleBuilder({ courseId }) {
     if (!window.confirm("Delete this entire module?")) return;
 
     await axios.delete(
-      `https://sachin-lms.onrender.com/courses/${courseId}/module/${mIndex}`
+      `${import.meta.env.VITE_API_URL}/courses/${courseId}/module/${mIndex}`
     );
 
     setSelectedModule(null);
@@ -60,7 +60,7 @@ export default function ModuleBuilder({ courseId }) {
 
     try {
       const res = await axios.post(
-        "https://sachin-lms.onrender.com/upload/video",
+        "${import.meta.env.VITE_API_URL}/upload/video",
         form,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -79,7 +79,7 @@ export default function ModuleBuilder({ courseId }) {
     if (!videoUrl.trim()) return alert("Upload video first!");
 
     await axios.post(
-      `https://sachin-lms.onrender.com/courses/${courseId}/module/${selectedModule}/lesson`,
+      `${import.meta.env.VITE_API_URL}/courses/${courseId}/module/${selectedModule}/lesson`,
       { title, videoUrl, description }
     );
 
@@ -94,7 +94,7 @@ export default function ModuleBuilder({ courseId }) {
     if (!window.confirm("Delete this lesson?")) return;
 
     await axios.delete(
-      `https://sachin-lms.onrender.com/courses/${courseId}/module/${selectedModule}/lesson/${lIndex}`
+      `${import.meta.env.VITE_API_URL}/courses/${courseId}/module/${selectedModule}/lesson/${lIndex}`
     );
 
     loadCourse();
